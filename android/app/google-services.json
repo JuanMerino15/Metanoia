@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1050367978739",
+    "project_id": "metanoia-3b14b",
+    "storage_bucket": "my-bucket-name.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "my-mobilesdk-app-id",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "my-client-id",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "my-api-key"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "my-client-id",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
