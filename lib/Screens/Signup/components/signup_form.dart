@@ -17,12 +17,12 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-   late String email = '';
-late String password = '';
-late String nombre = '';
-late String matricula = '';
-late int edad = 0;
-late int peso = 0;
+   late String email;
+late String password;
+late String nombre;
+late String matricula;
+late int edad;
+late int peso;
 late String error = '';
   @override
   Widget build(BuildContext context) {
@@ -111,7 +111,7 @@ late String error = '';
               }
               return null;
             },
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             onSaved: (valor) {
@@ -189,7 +189,8 @@ late String error = '';
             
     await credenciales.user!.sendEmailVerification();
            
-        print('Fuiste registrado exitosamente');
+       final snackBar = SnackBar(content: Text('Fuiste registrado exitosamente'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
          
             
           }

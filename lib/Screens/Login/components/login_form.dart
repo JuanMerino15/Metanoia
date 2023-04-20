@@ -16,9 +16,13 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  late String email, password, nombre, matricula;
-  late int edad, peso;
-  String error = "";
+late String email;
+late String password;
+late String nombre;
+late String matricula;
+late int edad;
+late int peso;
+late String error = '';
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -81,12 +85,17 @@ class _LoginFormState extends State<LoginForm> {
                   if (credenciales != null)
                     if (credenciales.user != null)
                       if (credenciales.user!.emailVerified) {
-                        print('Iniciaste sesión exitosamente');
+                              
+       final snackBar = SnackBar(content: Text('Iniciaste sesión exitosamente'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProfileScreen()),
                         );
+                      }else{
+                         final snackBar = SnackBar(content: Text('No has verificado tu email, revisa en la bandeja de entrada'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       }
                 }
               },
@@ -119,38 +128,22 @@ class _LoginFormState extends State<LoginForm> {
       ),
     );
   }
-
 Future<UserCredential?> login(String email, String password) async {
   try {
     UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
-    await FirebaseFirestore.instance.collection('usuarios').doc(userCredential.user?.uid).set({
     
-      'Contraseña': password,
-      'Correo Electronico': email,
-      
-    });
+    // Consultar los datos del usuario en Firestore
+    DocumentSnapshot<Map<String, dynamic>> userData = await FirebaseFirestore.instance.collection('usuarios').doc(userCredential.user?.uid).get();
+    
+    
+    
+    
     return userCredential;
   } on FirebaseAuthException catch (e) {
-    switch (e.code) {
-      case 'email-already-in-use':
-        setState(() {
-          error = 'El correo electrónico ya está en uso.';
-        });
-        break;
-      case 'weak-password':
-        setState(() {
-          error = 'La contraseña es débil.';
-        });
-        break;
-      default:
-        setState(() {
-          error = 'Ocurrió un error al intentar iniciar sesion.';
-        });
-    }
-    return null;
+    // ...
   }
 }
 }

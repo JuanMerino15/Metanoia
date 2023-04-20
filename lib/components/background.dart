@@ -34,6 +34,7 @@ class Background extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      SizedBox(height: 180.0),
                       Text(
                         'Bienvenido a Metanoia',
                         style: TextStyle(
@@ -42,7 +43,7 @@ class Background extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
                       child,
                     ],
                   ),

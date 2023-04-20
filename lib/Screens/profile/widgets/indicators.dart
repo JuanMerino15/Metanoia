@@ -16,7 +16,7 @@ class Indicators extends StatelessWidget {
           style: GoogleFonts.josefinSans(
             fontSize: 30,
             fontWeight: FontWeight.bold,
-            color: Color(0xff4245ff),
+            color: Color.fromARGB(255, 246, 246, 250),
           ),
         ),
         Text(
@@ -24,7 +24,7 @@ class Indicators extends StatelessWidget {
           style: GoogleFonts.josefinSans(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.black38,
+            color: Color.fromARGB(255, 165, 164, 164),
           ),
         ),
       ],
